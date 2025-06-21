@@ -22,7 +22,7 @@ const integrations = [
 
 export function EnterpriseScale() {
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
+    <section className="pt-10  bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-10 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl"></div>

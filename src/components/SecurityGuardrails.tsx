@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
 import { CardStack, Highlight } from "./ui/card-stack";
+import { ScrollReveal } from "./ui/scroll-reveal";
 import { 
   Shield, 
   Eye, 

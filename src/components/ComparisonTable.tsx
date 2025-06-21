@@ -70,7 +70,7 @@ export function ComparisonTable() {
           </p>
         </div>
 
-        <Card className="overflow-hidden">
+        <Card className="overflow-hidden max-w-6xl mx-auto">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-muted/50">

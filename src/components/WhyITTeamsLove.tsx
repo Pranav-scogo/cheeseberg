@@ -1,5 +1,6 @@
 import { Badge } from "./ui/badge";
 import { Timeline, TimelineEntry } from "./ui/timeline";
+import { ScrollReveal } from "./ui/scroll-reveal";
 import { 
   Monitor, 
   Clock, 
@@ -173,23 +174,32 @@ export function WhyITTeamsLove() {
       <div className="container mx-auto px-4 relative">
         {/* Header */}
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-6 text-primary border-primary/20 bg-primary/5">
-            <Sparkles className="w-4 h-4 mr-2" />
-            Proven Impact
-          </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Why IT Teams Love Iceberg
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            See how Iceberg transforms IT operations with measurable results that make both teams and employees happier
-          </p>
+          <ScrollReveal direction="fade" delay={100}>
+            <Badge variant="outline" className="mb-6 text-primary border-primary/20 bg-primary/5 hover:bg-primary/10 transition-all duration-300">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Proven Impact
+            </Badge>
+          </ScrollReveal>
+          
+          <ScrollReveal direction="up" delay={300}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent p-2">
+              Why IT Teams Love Iceberg
+            </h2>
+          </ScrollReveal>
+          
+          <ScrollReveal direction="up" delay={500}>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              See how Iceberg transforms IT operations with measurable results that make both teams and employees happier
+            </p>
+          </ScrollReveal>
         </div>
 
         {/* Timeline */}
-        <div className="max-w-6xl mx-auto">
-          <Timeline data={timelineData} />
-        </div>
-   
+        <ScrollReveal direction="up" delay={700}>
+          <div className="max-w-6xl mx-auto">
+            <Timeline data={timelineData} />
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

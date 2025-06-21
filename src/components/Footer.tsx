@@ -126,7 +126,7 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Card className="bg-card/90 backdrop-blur-xl border border-border/50 shadow-2xl relative overflow-hidden">
+            <Card className="bg-card/90 backdrop-blur-xl border border-border/50 shadow-2xl relative overflow-hidden max-w-6xl mx-auto">
               {/* Decorative gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 via-white/20 to-blue-50/30 dark:from-purple-900/20 dark:via-purple-800/10 dark:to-blue-900/20 pointer-events-none"></div>
               
