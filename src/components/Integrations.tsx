@@ -91,7 +91,7 @@ export function Integrations() {
         {/* API & Custom Integrations */}
         <div className="text-center mt-12">
           <p className="text-muted-foreground mb-4">
-            Don't see your tool? We offer custom integrations and a comprehensive API.
+            Don&apos;t see your tool? We offer custom integrations and a comprehensive API.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Badge variant="outline">REST API</Badge>

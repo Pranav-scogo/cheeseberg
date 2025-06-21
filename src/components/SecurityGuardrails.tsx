@@ -398,7 +398,7 @@ export function SecurityGuardrails() {
                 <Sparkles className="w-6 h-6 text-purple-600 dark:text-purple-400" />
               </div>
               <p className="text-muted-foreground mb-8 text-lg max-w-2xl mx-auto">
-                Enterprise-ready security that doesn't compromise on functionality or user experience. Get started with Iceberg today.
+                Enterprise-ready security that doesn&apos;t compromise on functionality or user experience. Get started with Iceberg today.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
                 {[

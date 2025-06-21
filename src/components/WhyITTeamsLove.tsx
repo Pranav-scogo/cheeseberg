@@ -1,6 +1,5 @@
 import { Badge } from "./ui/badge";
 import { Timeline, TimelineEntry } from "./ui/timeline";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { 
   Monitor, 
   Clock, 

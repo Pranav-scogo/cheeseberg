@@ -1,51 +1,11 @@
 import { motion } from "framer-motion";
-import { Badge } from "./ui/badge";
 import { Card, CardContent } from "./ui/card";
 import { 
-  Heart, 
   Clock, 
   Puzzle, 
-  Shield,
-  Monitor,
   Globe,
-  Users,
   Zap
 } from "lucide-react";
-
-const benefits = [
-  {
-    icon: Heart,
-    title: "Enhances Digital Employee Experience (DEX)",
-    description: "Improves employee satisfaction with instant, accurate support across all channels and languages.",
-    metrics: ["95% employee satisfaction", "24/7 availability", "Instant responses"],
-    gradient: "from-rose-500/10 to-rose-600/20",
-    iconColor: "text-rose-600"
-  },
-  {
-    icon: Clock,
-    title: "Cuts Ticket Volume and Resolution Time (MTTR)",
-    description: "Dramatically reduces support tickets while accelerating resolution times through intelligent automation.",
-    metrics: ["70% faster resolution", "60% fewer tickets", "Automated L0-L2 support"],
-    gradient: "from-blue-500/10 to-blue-600/20",
-    iconColor: "text-blue-600"
-  },
-  {
-    icon: Puzzle,
-    title: "Seamless Integration Ecosystem",
-    description: "Connects smoothly with your existing enterprise tools and workflows for unified operations.",
-    metrics: ["50+ integrations", "API-first design", "Zero disruption setup"],
-    gradient: "from-purple-500/10 to-purple-600/20",
-    iconColor: "text-purple-600"
-  },
-  {
-    icon: Shield,
-    title: "Secure, Scalable Enterprise Support",
-    description: "Enterprise-grade security and scalability that grows with your organization from day one.",
-    metrics: ["SOC 2 compliant", "Global scalability", "Enterprise security"],
-    gradient: "from-green-500/10 to-green-600/20",
-    iconColor: "text-green-600"
-  }
-];
 
 const integrations = [
   { name: "ServiceNow", category: "ITSM" },

@@ -5,7 +5,6 @@ import {
   Clock, 
   Globe, 
   DollarSign, 
-  Users, 
   Zap,
   CheckCircle,
   ArrowRight
@@ -81,7 +80,7 @@ export function Results() {
             What You Can Expect with Iceberg
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Real results from enterprises who've transformed their IT support with Iceberg
+            Real results from enterprises who&apos;ve transformed their IT support with Iceberg
           </p>
         </div>
 
@@ -173,7 +172,7 @@ export function Results() {
                   {story.result}
                 </div>
                 <p className="text-sm text-muted-foreground italic">
-                  "{story.quote}"
+                  &ldquo;{story.quote}&rdquo;
                 </p>
               </Card>
             ))}

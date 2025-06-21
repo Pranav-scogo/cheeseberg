@@ -66,7 +66,7 @@ export function ComparisonTable() {
             Agentic AI vs Traditional Chatbots
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            See how Iceberg's agentic AI approach surpasses traditional chatbot limitations
+            See how Iceberg&apos;s agentic AI approach surpasses traditional chatbot limitations
           </p>
         </div>
 

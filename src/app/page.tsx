@@ -9,7 +9,6 @@ import { SecurityGuardrails } from "../components/SecurityGuardrails";
 import { ComparisonTable } from "../components/ComparisonTable";
 import { Footer } from "../components/Footer";
 import { EnterpriseScale } from "../components/EnterpriseScale";
-import { ImpactResults } from "../components/ImpactResults";
 export default function App() {
   return (
     <SmoothScrollProvider>

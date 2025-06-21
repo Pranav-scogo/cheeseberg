@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, useEffect, useRef, createContext, useContext } from "react";
 import Lenis from "lenis";
 
 const SmoothScrollContext = createContext<Lenis | null>(null);
@@ -15,7 +15,7 @@ export default function SmoothScrollProvider({
   children: React.ReactNode;
 }) {
   const [lenisRef, setLenisRef] = useState<Lenis | null>(null);
-  let rafId: number | null = null; // Store requestAnimationFrame ID
+  const rafIdRef = useRef<number | null>(null); // Use useRef instead of let
 
   useEffect(() => {
     const scroller = new Lenis({
@@ -25,15 +25,15 @@ export default function SmoothScrollProvider({
 
     function raf(time: number) {
       scroller.raf(time);
-      rafId = requestAnimationFrame(raf);
+      rafIdRef.current = requestAnimationFrame(raf);
     }
-    rafId = requestAnimationFrame(raf);
+    rafIdRef.current = requestAnimationFrame(raf);
     setLenisRef(scroller);
 
     return () => {
       // Check if rafId has a value before cancelling
-      if (rafId !== null) {
-        cancelAnimationFrame(rafId);
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current);
       }
       scroller.destroy(); // Use scroller directly as lenisRef might be stale
     };

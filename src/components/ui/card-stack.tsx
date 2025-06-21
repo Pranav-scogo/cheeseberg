@@ -18,49 +18,53 @@ export const CardStack = ({
   offset?: number;
   scaleFactor?: number;
 }) => {
-  const CARD_OFFSET = offset || 20; // Reduced offset for cleaner stacking
-  const SCALE_FACTOR = scaleFactor || 0.02; // Very subtle scaling
+  const CARD_OFFSET = offset || 20;
+  const SCALE_FACTOR = scaleFactor || 0.02;
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"] // Extended range for slower animation
+    offset: ["start end", "end start"]
   });
+
+  // Create transforms for each card individually outside of any callback
+  const card0Y = useTransform(scrollYProgress, [0, 0.25], [400, 0]);
+  const card0Scale = useTransform(scrollYProgress, [0, 0.25], [0.85, 1]);
+  const card0Opacity = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
+  const card0RotateZ = useTransform(scrollYProgress, [0, 0.25], [0, 0]);
+
+  const card1Y = useTransform(scrollYProgress, [0.12, 0.37], [400, CARD_OFFSET]);
+  const card1Scale = useTransform(scrollYProgress, [0.12, 0.37], [0.85, 1 + SCALE_FACTOR]);
+  const card1Opacity = useTransform(scrollYProgress, [0.12, 0.27], [0, 1]);
+  const card1RotateZ = useTransform(scrollYProgress, [0.12, 0.37], [-1.5, 0]);
+
+  const card2Y = useTransform(scrollYProgress, [0.24, 0.49], [400, 2 * CARD_OFFSET]);
+  const card2Scale = useTransform(scrollYProgress, [0.24, 0.49], [0.85, 1 + 2 * SCALE_FACTOR]);
+  const card2Opacity = useTransform(scrollYProgress, [0.24, 0.39], [0, 1]);
+  const card2RotateZ = useTransform(scrollYProgress, [0.24, 0.49], [-3, 0]);
+
+  const card3Y = useTransform(scrollYProgress, [0.36, 0.61], [400, 3 * CARD_OFFSET]);
+  const card3Scale = useTransform(scrollYProgress, [0.36, 0.61], [0.85, 1 + 3 * SCALE_FACTOR]);
+  const card3Opacity = useTransform(scrollYProgress, [0.36, 0.51], [0, 1]);
+  const card3RotateZ = useTransform(scrollYProgress, [0.36, 0.61], [-4.5, 0]);
+
+  const card4Y = useTransform(scrollYProgress, [0.48, 0.73], [400, 4 * CARD_OFFSET]);
+  const card4Scale = useTransform(scrollYProgress, [0.48, 0.73], [0.85, 1 + 4 * SCALE_FACTOR]);
+  const card4Opacity = useTransform(scrollYProgress, [0.48, 0.63], [0, 1]);
+  const card4RotateZ = useTransform(scrollYProgress, [0.48, 0.73], [-6, 0]);
+
+  const cardTransforms = [
+    { y: card0Y, scale: card0Scale, opacity: card0Opacity, rotateZ: card0RotateZ },
+    { y: card1Y, scale: card1Scale, opacity: card1Opacity, rotateZ: card1RotateZ },
+    { y: card2Y, scale: card2Scale, opacity: card2Opacity, rotateZ: card2RotateZ },
+    { y: card3Y, scale: card3Scale, opacity: card3Opacity, rotateZ: card3RotateZ },
+    { y: card4Y, scale: card4Scale, opacity: card4Opacity, rotateZ: card4RotateZ },
+  ];
 
   return (
     <div ref={containerRef} className="relative min-h-[1000px] w-full max-w-4xl mx-auto px-4">
       {items.map((card, index) => {
-        // Slower and more controlled progression
-        const cardStart = index * 0.12; // Even slower start progression
-        const cardEnd = cardStart + 0.25; // Longer animation duration
-        
-        // Y position animation - cards come from below and stack forward
-        const y = useTransform(
-          scrollYProgress,
-          [cardStart, cardEnd],
-          [400, index * CARD_OFFSET] // Cards stack UP (positive offset for later cards)
-        );
-        
-        // Scale animation - very subtle
-        const scale = useTransform(
-          scrollYProgress,
-          [cardStart, cardEnd],
-          [0.85, 1 + index * SCALE_FACTOR] // Later cards are slightly larger
-        );
-        
-        // Opacity animation - longer fade in
-        const opacity = useTransform(
-          scrollYProgress,
-          [cardStart, cardStart + 0.15],
-          [0, 1]
-        );
-
-        // Rotation for more dynamic effect - reverse direction
-        const rotateZ = useTransform(
-          scrollYProgress,
-          [cardStart, cardEnd],
-          [-index * 1.5, 0] // Slight rotation that straightens out
-        );
+        const transforms = cardTransforms[index] || cardTransforms[0];
 
         return (
           <motion.div
@@ -68,18 +72,16 @@ export const CardStack = ({
             className="absolute bg-card/95 backdrop-blur-xl border border-purple-200/60 dark:border-purple-700/60 w-full max-w-3xl left-1/2 rounded-3xl p-8 shadow-2xl flex flex-col justify-between hover:border-purple-400/50 dark:hover:border-purple-500/50 transition-all duration-500 min-h-[450px]"
             style={{
               transformOrigin: "center center",
-              x: "-50%", // Center horizontally
-              y: y,
-              scale: scale,
-              opacity: opacity,
-              rotateZ: rotateZ,
-              zIndex: index + 1, // FIXED: Later cards have higher z-index (stack forward)
+              x: "-50%",
+              y: transforms.y,
+              scale: transforms.scale,
+              opacity: transforms.opacity,
+              rotateZ: transforms.rotateZ,
+              zIndex: index + 1,
             }}
           >
-            {/* Enhanced Glassmorphism overlay with purple tint */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 via-white/20 to-purple-100/20 dark:from-purple-900/20 dark:via-purple-800/10 dark:to-purple-700/15 rounded-3xl pointer-events-none"></div>
             
-            {/* Subtle purple border glow */}
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-200/20 via-transparent to-purple-300/20 dark:from-purple-600/20 dark:via-transparent dark:to-purple-500/20 p-[1px]">
               <div className="w-full h-full bg-card/90 rounded-3xl"></div>
             </div>
@@ -99,11 +101,9 @@ export const CardStack = ({
               </p>
             </div>
 
-            {/* Decorative corner elements with purple accent */}
             <div className="absolute top-6 right-6 w-2 h-2 bg-purple-400/30 dark:bg-purple-500/40 rounded-full"></div>
             <div className="absolute top-6 right-10 w-1 h-1 bg-purple-300/40 dark:bg-purple-400/50 rounded-full"></div>
             
-            {/* Card number indicator */}
             <div className="absolute top-6 left-6 w-8 h-8 bg-gradient-to-br from-purple-100/80 to-purple-200/80 dark:from-purple-800/80 dark:to-purple-700/80 rounded-full flex items-center justify-center">
               <span className="text-xs font-bold text-purple-600 dark:text-purple-300">{index + 1}</span>
             </div>
